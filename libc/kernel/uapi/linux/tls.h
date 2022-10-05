@@ -21,6 +21,8 @@
 #include <linux/types.h>
 #define TLS_TX 1
 #define TLS_RX 2
+#define TLS_TX_ZEROCOPY_RO 3
+#define TLS_RX_EXPECT_NO_PAD 4
 #define TLS_VERSION_MINOR(ver) ((ver) & 0xFF)
 #define TLS_VERSION_MAJOR(ver) (((ver) >> 8) & 0xFF)
 #define TLS_VERSION_NUMBER(id) ((((id ##_VERSION_MAJOR) & 0xFF) << 8) | ((id ##_VERSION_MINOR) & 0xFF))
@@ -120,6 +122,8 @@ enum {
   TLS_INFO_CIPHER,
   TLS_INFO_TXCONF,
   TLS_INFO_RXCONF,
+  TLS_INFO_ZC_RO_TX,
+  TLS_INFO_RX_NO_PAD,
   __TLS_INFO_MAX,
 };
 #define TLS_INFO_MAX (__TLS_INFO_MAX - 1)
