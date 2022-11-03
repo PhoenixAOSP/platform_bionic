@@ -72,6 +72,12 @@ struct io_uring_sqe {
       __u16 __pad3[1];
     };
   };
+  union {
+    struct {
+      __u16 addr_len;
+      __u16 __pad3[1];
+    };
+  };
   __u64 __pad2[2];
 };
 enum {
