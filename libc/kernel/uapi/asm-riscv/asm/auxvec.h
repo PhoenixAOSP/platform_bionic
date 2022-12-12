@@ -16,28 +16,16 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _UAPI__HID_H
-#define _UAPI__HID_H
-#define USB_INTERFACE_CLASS_HID 3
-#define USB_INTERFACE_SUBCLASS_BOOT 1
-#define USB_INTERFACE_PROTOCOL_KEYBOARD 1
-#define USB_INTERFACE_PROTOCOL_MOUSE 2
-enum hid_report_type {
-  HID_INPUT_REPORT = 0,
-  HID_OUTPUT_REPORT = 1,
-  HID_FEATURE_REPORT = 2,
-  HID_REPORT_TYPES,
-};
-enum hid_class_request {
-  HID_REQ_GET_REPORT = 0x01,
-  HID_REQ_GET_IDLE = 0x02,
-  HID_REQ_GET_PROTOCOL = 0x03,
-  HID_REQ_SET_REPORT = 0x09,
-  HID_REQ_SET_IDLE = 0x0A,
-  HID_REQ_SET_PROTOCOL = 0x0B,
-};
-#define HID_DT_HID (USB_TYPE_CLASS | 0x01)
-#define HID_DT_REPORT (USB_TYPE_CLASS | 0x02)
-#define HID_DT_PHYSICAL (USB_TYPE_CLASS | 0x03)
-#define HID_MAX_DESCRIPTOR_SIZE 4096
+#ifndef _UAPI_ASM_RISCV_AUXVEC_H
+#define _UAPI_ASM_RISCV_AUXVEC_H
+#define AT_SYSINFO_EHDR 33
+#define AT_L1I_CACHESIZE 40
+#define AT_L1I_CACHEGEOMETRY 41
+#define AT_L1D_CACHESIZE 42
+#define AT_L1D_CACHEGEOMETRY 43
+#define AT_L2_CACHESIZE 44
+#define AT_L2_CACHEGEOMETRY 45
+#define AT_L3_CACHESIZE 46
+#define AT_L3_CACHEGEOMETRY 47
+#define AT_VECTOR_SIZE_ARCH 9
 #endif
