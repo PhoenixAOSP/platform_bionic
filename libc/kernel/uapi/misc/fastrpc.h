@@ -27,6 +27,28 @@
 #define FASTRPC_IOCTL_MMAP _IOWR('R', 6, struct fastrpc_req_mmap)
 #define FASTRPC_IOCTL_MUNMAP _IOWR('R', 7, struct fastrpc_req_munmap)
 #define FASTRPC_IOCTL_INIT_ATTACH_SNS _IO('R', 8)
+#define FASTRPC_IOCTL_INIT_CREATE_STATIC _IOWR('R', 9, struct fastrpc_init_create_static)
+#define FASTRPC_IOCTL_MEM_MAP _IOWR('R', 10, struct fastrpc_mem_map)
+#define FASTRPC_IOCTL_MEM_UNMAP _IOWR('R', 11, struct fastrpc_mem_unmap)
+#define FASTRPC_IOCTL_GET_DSP_INFO _IOWR('R', 13, struct fastrpc_ioctl_capability)
+enum fastrpc_map_flags {
+  FASTRPC_MAP_STATIC = 0,
+  FASTRPC_MAP_RESERVED,
+  FASTRPC_MAP_FD = 2,
+  FASTRPC_MAP_FD_DELAYED,
+  FASTRPC_MAP_FD_NOMAP = 16,
+  FASTRPC_MAP_MAX,
+};
+enum fastrpc_proc_attr {
+  FASTRPC_MODE_DEBUG = (1 << 0),
+  FASTRPC_MODE_PTRACE = (1 << 1),
+  FASTRPC_MODE_CRC = (1 << 2),
+  FASTRPC_MODE_UNSIGNED_MODULE = (1 << 3),
+  FASTRPC_MODE_ADAPTIVE_QOS = (1 << 4),
+  FASTRPC_MODE_SYSTEM_PROCESS = (1 << 5),
+  FASTRPC_MODE_PRIVILEGED = (1 << 6),
+};
+#define FASTRPC_ATTR_SECUREMAP (1)
 struct fastrpc_invoke_args {
   __u64 ptr;
   __u64 length;
@@ -44,6 +66,11 @@ struct fastrpc_init_create {
   __u32 attrs;
   __u32 siglen;
   __u64 file;
+};
+struct fastrpc_init_create_static {
+  __u32 namelen;
+  __u32 memlen;
+  __u64 name;
 };
 struct fastrpc_alloc_dma_buf {
   __s32 fd;
